@@ -5,6 +5,7 @@
     nginx_port: 80
   tasks:
     - name: variable example
+      vars:
+        nginx_port: 8080
       ansible.builtin.debug:
         msg: "nginx will run on port {{ nginx_port }}"
-        
