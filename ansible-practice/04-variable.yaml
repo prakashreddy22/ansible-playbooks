@@ -1,8 +1,8 @@
 - name: variables
   hosts: web
   become: yes
-  vars:
-    nginx_port: 80
+  # vars:
+  #   nginx_port: 80
   vars_files:
     - vars.yaml
   tasks:
