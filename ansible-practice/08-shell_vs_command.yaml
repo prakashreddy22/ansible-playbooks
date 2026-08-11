@@ -6,9 +6,9 @@
       ansible.builtin.shell: "echo 'hello world'"
     - name: shell example with multiple commands
       ansible.builtin.shell: ls -l > /tmp/ls_output.txt
-      registers: output_testing
+      register: output_testing
     - name: debug output
       ansible.builtin.debug:
-        msg: "{{ output_testing.stdout }}"
+        msg: "{{ output_testing }}"
     - name: command example
       ansible.builtin.command: "echo 'hello world'"
