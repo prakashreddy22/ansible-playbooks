@@ -1,6 +1,6 @@
 - name: shell vs Command
-  hosts: local
-  connection: local
+  hosts: web
+  become: yes
   tasks:
   - name: execute ls command
     #ansible.builtin.command: ls -ltr > /tmp/output.txt
