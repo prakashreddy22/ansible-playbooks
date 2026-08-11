@@ -8,3 +8,7 @@
       ansible.builtin.debug:
         msg: "nginx will run on port {{ nginx_port }}"
       when: nginx_port == 80
+    - name: facts
+      ansible.builtin.debug:
+        msg: "nginx will run on port {{ nginx_port }}"
+      when: ansible_facts['distribution'] == "Ubuntu"
