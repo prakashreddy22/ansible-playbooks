@@ -5,7 +5,7 @@
     - name: shell example
       ansible.builtin.shell: "echo 'hello world'"
     - name: shell example with multiple commands
-      ansible.builtin.shell: ls -l > /tmp/ls_output.txt; cat /tmp/ls_output.txt
+      ansible.builtin.shell: ls -l > /tmp/ls_output.txt
       registers: output_testing
     - name: debug output
       ansible.builtin.debug:
