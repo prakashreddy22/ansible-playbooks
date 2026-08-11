@@ -9,6 +9,6 @@
       registers: output_testing
     - name: debug output
       ansible.builtin.debug:
-        msg: "{{ output_testing }}"
+        msg: "{{ output_testing.stdout }}"
     - name: command example
       ansible.builtin.command: "echo 'hello world'"
