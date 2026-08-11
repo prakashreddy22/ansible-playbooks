@@ -1,0 +1,29 @@
+- name: loops
+  hosts: web
+  become: yes
+  vars:
+    nginx_port: 80
+    users:
+      - user1
+      - user2
+      - user3
+  tasks:
+    - name: variable example
+      ansible.builtin.debug:
+        msg: "nginx will run on port {{ nginx_port }}"
+      loop:
+        - 80
+        - 8080
+        - 8000
+    - name: user example
+      ansible.builtin.debug:
+        msg: "Processing user: {{ item }}"
+      loop: "{{ users }}"
+    - name: user example with loop control
+      loop:
+        - { name: "user1", uid: 1001 }
+        - { name: "user2", uid: 1002 }
+        - { name: "user3", uid: 1003 }
+      ansible.builtin.debug:
+        msg: "Processing user: {{ item.name }} with UID: {{ item.uid }}"
+      
