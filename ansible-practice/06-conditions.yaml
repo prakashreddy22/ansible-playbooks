@@ -1,0 +1,10 @@
+- name: conditions
+  hosts: web
+  become: yes
+  vars:
+    nginx_port: 80
+  tasks:
+    - name: variable example
+      ansible.builtin.debug:
+        msg: "nginx will run on port {{ nginx_port }}"
+      when: nginx_port == 80
