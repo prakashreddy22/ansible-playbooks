@@ -15,7 +15,7 @@
     - name: set root password
       community.mysql.mysql_user:
         login_user: root
+        name: root
         login_password: "{{ mysql_root_password }}"
         host_all: yes
       register: mysql_root_user
-      
