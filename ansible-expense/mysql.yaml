@@ -20,10 +20,18 @@
         state: started
         enabled: yes
     
-    - name: set root password
-      community.mysql.mysql_user:
+    - name: connect to mysql server
+      community.mysql.mysql_info:
         login_user: root
-        name: root
         login_password: "{{ mysql_root_password }}"
-        host_all: yes
-      register: mysql_root_user
+        login_host: "{{ inventory_hostname }}"
+      register: mysql_info
+      ignore_errors: true
+
+    - name: print the output
+      ansible.builtin.debug:
+        msg: "MySQL info: {{ mysql_info }}"
+
+    - name: setup root password
+      ansible.builtin.command: " mysql_secure_installation --set-root-pass {{ mysql_root_password }} "
+      when: mysql_info.failed is true
