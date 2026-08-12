@@ -17,6 +17,5 @@
         login_user: root
         login_password: "{{ mysql_root_password }}"
         host_all: yes
-        state: present
       register: mysql_root_user
       
