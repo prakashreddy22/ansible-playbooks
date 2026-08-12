@@ -2,6 +2,11 @@
   hosts: mysql
   become: yes
   tasks:
+    - name: mysql library install
+      ansible.builtin.yum:
+        name: PyMySQL
+        state: present
+        
     - name: install mysql
       ansible.builtin.yum:
         name: mysql-server
