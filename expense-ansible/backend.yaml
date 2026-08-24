@@ -60,7 +60,7 @@
       state: import
       name: all
       login_user: root
-      login_password: ExpenseApp@1
+      login_password: Expense@App1
       login_host: mysql.kisanseva.shop
       target: /app/schema/backend.sql
 
