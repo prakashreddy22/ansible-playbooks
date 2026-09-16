@@ -1,0 +1,4 @@
+- name: Restart backend service
+  ansible.builtin.systemd:
+    name: backend
+    state: restarted
