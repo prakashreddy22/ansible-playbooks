@@ -51,12 +51,16 @@
     dest: /etc/systemd/system/backend.service
 
 - name: install python libs
+  tags: 
+  - import
   ansible.builtin.pip:
     name: "{{ item }}"
     executable: pip3.9
   loop:
   - cryptography
   - PyMySQL
+  - boto3
+  - botocore
 
 - name: import mysql data
   tags: 
