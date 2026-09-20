@@ -1,1 +1,3 @@
-BACKEND_HOST: backend.daws82s.online
+BACKEND_HOST: backend.kisanseva.shop
+APP_LOCAION: /usr/share/nginx/html
+COMPONENT: frontend

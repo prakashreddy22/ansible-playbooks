@@ -8,6 +8,11 @@
     name: nginx
     state: started
     enabled: yes
+  
+# - name: include common role
+#   include_role:
+#     name: common
+#     #tasks_from: main
 
 - name: delete html directory
   ansible.builtin.file:
@@ -34,4 +39,6 @@
   ansible.builtin.template:
     src: expense.conf.j2
     dest: /etc/nginx/default.d/expense.conf
-  notify: restart nginx
+  notify: 
+  - Restart Nginx
+  
