@@ -16,6 +16,13 @@
   ansible.builtin.user:
     name: expense
 
+- name: include from common role
+  # tags: 
+  # - deployment
+  include_role:
+    name: common
+    tasks_from: main
+
 - name: create app directory
   ansible.builtin.file:
     path: /app
@@ -33,11 +40,13 @@
     remote_src: yes
 
 - name: Install dependencies
+  tags: 
+  - deployment
   community.general.npm:
     path: /app
 
 - name: copy backend service
-  ansible.builtin.template:
+  ansible.builtin.template: #it will search in templates folder
     src: backend.service.j2
     dest: /etc/systemd/system/backend.service
 
@@ -53,12 +62,14 @@
   community.mysql.mysql_db:
     state: import
     name: all
-    login_user: root
-    login_password: Expense@App1
-    login_host: mysql.kisanseva.shop
+    login_user: "{{ MYSQL_USER }}"
+    login_password: "{{ MYSQL_PASSWORD }}"
+    login_host: "{{ MYSQL_HOST }}"
     target: /app/schema/backend.sql
 
 - name: daemon reload and restart service
+  tags: 
+  - deployment
   ansible.builtin.systemd_service:
     enabled: true
     state: restarted
