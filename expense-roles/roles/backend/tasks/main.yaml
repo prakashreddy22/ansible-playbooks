@@ -63,7 +63,7 @@
     state: import
     name: all
     login_user: "{{ MYSQL_USER }}"
-    login_password: "{{ MYSQL_PASSWORD }}"
+    login_password: "{{ lookup('amazon.aws.aws_ssm', '/expense/mysql/root', decrypt=True)}}"
     login_host: "{{ MYSQL_HOST }}"
     target: /app/schema/backend.sql
 
