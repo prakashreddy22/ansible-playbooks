@@ -59,6 +59,8 @@
   - PyMySQL
 
 - name: import mysql data
+  tags: 
+  - import
   community.mysql.mysql_db:
     state: import
     name: all
