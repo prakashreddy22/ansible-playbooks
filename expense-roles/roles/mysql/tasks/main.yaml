@@ -1,21 +1,22 @@
 - name: Install MySQL libraries
   ansible.builtin.pip:
-     name: "{{ item }}"
-     executable: pip3.9
+    name: "{{ item }}"
+    executable: pip3.9
   loop:
   - cryptography
   - PyMySQL
 
-- name: install mysql
-  ansible.builtin.yum:
+- name: Install MySQL server
+  ansible.builtin.package:
     name: mysql-server
-    state: present
-- name: start mysql service
+    state: installed
+
+- name: start and enable mysql server
   ansible.builtin.service:
     name: mysqld
     state: started
     enabled: yes
-  
+
 - name: connect to mysql server
   community.mysql.mysql_info:
     login_user: root
