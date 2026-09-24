@@ -1,0 +1,23 @@
+plugin: amazon.aws.aws_ec2
+
+# Specify your target AWS regions
+regions:
+  - us-east-1
+
+# Only pull instances matching these filters
+filters:
+  instance-state-name: 'running'
+  tag:Project: 'nginx'
+
+# Define what to use for the Ansible host inventory identifier
+hostnames:
+  - private-ip-address
+
+# # Dynamically create inventory groups based on AWS Tags
+# keyed_groups:
+#   # Creates groups like: tag_Environment_production, tag_Environment_staging
+#   - key: tags.Environment
+#     prefix: tag_Environment
+#   # Creates groups like: tag_Role_web, tag_Role_db
+#   - key: tags.Role
+#     prefix: tag_Role
