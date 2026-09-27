@@ -8,7 +8,7 @@ regions:
 filters:
   instance-state-name: 'running'
   tag:
-  - Name: 'nginx'
+  - Name: agent-*
 
 # Define what to use for the Ansible host inventory identifier
 hostnames:
