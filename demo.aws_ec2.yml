@@ -7,8 +7,7 @@ regions:
 # Only pull instances matching these filters
 filters:
   instance-state-name: 'running'
-  tag:
-  - Name: 'agent-*'
+  tag:Name: 'agent-*'
 
 # Define what to use for the Ansible host inventory identifier
 hostnames:
