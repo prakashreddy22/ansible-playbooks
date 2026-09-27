@@ -7,12 +7,16 @@ regions:
 # Only pull instances matching these filters
 filters:
   instance-state-name: 'running'
-  tag:Project: 'nginx'
+  tag:
+  - Name: 'nginx'
 
 # Define what to use for the Ansible host inventory identifier
 hostnames:
   - private-ip-address
 
+# Define what to use for the Ansible host inventory identifier
+compose:
+  ansible_host: private_ip_address
 # # Dynamically create inventory groups based on AWS Tags
 # keyed_groups:
 #   # Creates groups like: tag_Environment_production, tag_Environment_staging
