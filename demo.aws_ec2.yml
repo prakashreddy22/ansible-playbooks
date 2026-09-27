@@ -1,6 +1,4 @@
 plugin: amazon.aws.aws_ec2
-ansible_user: ec2-user
-ansible_password: DevOPs321
 # Specify your target AWS regions
 regions:
   - us-east-1
